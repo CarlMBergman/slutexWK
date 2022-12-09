@@ -1,0 +1,18 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#inputFields {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    width: 8rem;
+}
+
+#movieSubmit {
+    margin-top: 1rem;
+    width: 8rem;
+}
