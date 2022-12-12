@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
-import { hideDeletedMovie, showMovies } from "./display.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, where } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
+import { showMovies, displaySearch } from "./display.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDvvBT6tdaIPSAHks7DM_QLDfFQyIHPk74",
@@ -21,6 +21,8 @@ async function saveMovie(movie) {
     } catch (error) {
         console.log(error);
     }
+    
+    getMovies()
 }
 
 async function getMovies() {
@@ -36,8 +38,8 @@ function removeClick() {
     removeBtn.forEach((btn) => {
         btn.addEventListener('click', async (event) => {
             const movieId = event.target.getAttribute('data-movie-id');
-            const articleId = `#${movieId}`
-            document.querySelector(`${articleId}`).style.display = 'none'
+            const articleId = event.target.getAttribute('movie-name')
+            document.querySelector(`#${articleId}`).style.display = 'none'
             await removeMovie(movieId)
         })
     })
@@ -46,12 +48,37 @@ function removeClick() {
 async function removeMovie(movieId) {
     try {
         await deleteDoc(doc(db, 'movies', movieId))
-        hideDeletedMovie()
     } catch (error) {
         console.log(error);
     }
 }
 
+async function searchMovie(searchValue) {
+    try {
+        const movieNameQuery = query(collection(db, 'movies'), where('Name', '==', searchValue));
+        const result = await getDocs(movieNameQuery)
+        let resultMovie = {};
+
+        result.forEach((movieValue) => {
+            resultMovie = movieValue;
+        })
+        return resultMovie
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function manageSearch(searchValue) {
+    const movieName = await searchMovie(searchValue)
+    const movieId = movieName.id
+    if (movieId) {
+        console.log(movieName.data().Genre);
+        displaySearch(movieName)
+    } else {
+        alert('Du har ingen sparad film med detta namn!')
+    }
+}
+
 getMovies()
 
-export { saveMovie }
+export { saveMovie, manageSearch }
