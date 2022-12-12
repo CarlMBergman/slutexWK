@@ -2,6 +2,7 @@ const movieSection  = document.querySelector('#savedMoviesSection')
 const searchSection = document.querySelector('#searchSection')
 
 function showMovies(savedMovies) {
+    movieSection.classList.toggle('hide')
     savedMovies.forEach((savedMovie) => {
         const elem = `
         <article class="savedMovieArt" id="${savedMovie.data().Name}">
@@ -11,11 +12,19 @@ function showMovies(savedMovies) {
             <button class="removeMovieBtn" movie-name="${savedMovie.data().Name}" data-movie-id="${savedMovie.id}">Ta bort filmen ifrån listan</button>
         </article>
         `
-        movieSection.insertAdjacentHTML('beforeend', elem)
+        movieSection.insertAdjacentHTML('afterbegin', elem)
     });
 }
 
-async function displaySearch(movie) {
+function removeMoviesFromDom() {
+    const movieArticles = document.querySelectorAll('.savedMovieArt')
+    movieArticles.forEach((article) => {
+        article.remove()
+    })
+    movieSection.classList.toggle('hide')
+}
+
+function displaySearch(movie) {
     const elem = `
     <article>
         <h1 class="savedMovieHead">${movie.data().Name}</h1>
@@ -26,4 +35,4 @@ async function displaySearch(movie) {
 
     searchSection.insertAdjacentHTML('beforeend', elem)
 }
-export { showMovies, displaySearch }
+export { showMovies, displaySearch, removeMoviesFromDom }

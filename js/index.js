@@ -1,4 +1,5 @@
-import { saveMovie, manageSearch } from './modules/firebase.js'
+import { removeMoviesFromDom } from './modules/display.js'
+import { saveMovie, manageSearch, getMovies } from './modules/firebase.js'
 
 const movieNameInput  = document.querySelector('#movieNameInput')
 const movieDateInput  = document.querySelector('#movieDateInput')
@@ -6,6 +7,8 @@ const movieGenreInput = document.querySelector('#movieGenreInput')
 const submitBtn       = document.querySelector('#movieSubmit')
 const searchBtn       = document.querySelector('#searchBtn')
 const searchInput     = document.querySelector('#searchBar')
+const showSavedBtn    = document.querySelector('#showSaved')
+const backToSearch    = document.querySelector('#backToSearch')
 let movie             = {
     Name: '',
     Genre: '',
@@ -25,14 +28,10 @@ searchBtn.addEventListener('click', () => {
     manageSearch(searchValue)
 })
 
-// function checkInputs() {
-//     if (movie.Name == '') {
-//         alert('Skriv in filmens namn!')
-//     }
-//     else if(movie.Genre == '') {
-//         alert('Skriv in filmens genre!')
-//     }
-//     else if (movie.Date == '') {
-//         alert('Skriv in när filmen släpptes!')
-//     }
-// }
+showSavedBtn.addEventListener('click', () => {
+    getMovies()
+})
+
+backToSearch.addEventListener('click', () => {
+    removeMoviesFromDom()
+})

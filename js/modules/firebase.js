@@ -88,6 +88,6 @@ async function manageSearch(searchValue) {
     }
 }
 
-getMovies()
 
-export { saveMovie, manageSearch }
+
+export { saveMovie, manageSearch, getMovies }

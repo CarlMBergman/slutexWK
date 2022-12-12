@@ -4,7 +4,7 @@
 }
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 body {
@@ -68,4 +68,25 @@ button {
 
 #movieSubmit {
     margin-top: 1rem;
+}
+
+#savedMoviesSection {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+    border: 10px solid #242423;
+    background-color: #333533;
+    width: 30rem;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.savedMovieArt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
