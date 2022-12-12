@@ -19,6 +19,7 @@ header {
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     align-content: center;
+    margin-bottom: 1rem;
 }
 
 button {
@@ -27,6 +28,7 @@ button {
     width: 10rem;
     height: 2rem;
     border-radius: 5px;
+    margin-top: 6px;
 }
 
 #headerText {
@@ -70,13 +72,21 @@ button {
     margin-top: 1rem;
 }
 
-#savedMoviesSection {
+#toCenterSection {
+    width: 100vw;
     position: absolute;
+    z-index: 5;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 1;
+}
+
+#savedMoviesSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     border: 10px solid #242423;
     background-color: #333533;
     width: 30rem;
@@ -89,4 +99,9 @@ button {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 1rem;
+}
+
+.savedMovieArt h1 {
+    font-size: 2rem;
 }
