@@ -16,13 +16,22 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
 
 async function saveMovie(movie) {
-    try {
-        await addDoc(collection(db, 'movies'), movie)
-    } catch (error) {
-        console.log(error);
+    if (movie.Name == '') {
+        alert('Skriv in filmens namn!')
     }
-    
-    getMovies()
+    else if(movie.Genre == '') {
+        alert('Skriv in filmens genre!')
+    }
+    else if (movie.Date == '') {
+        alert('Skriv in när filmen släpptes!')
+    }
+    else {
+        try {
+            await addDoc(collection(db, 'movies'), movie)
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 async function getMovies() {

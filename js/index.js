@@ -17,10 +17,22 @@ submitBtn.addEventListener('click', () => {
     movie.Date = movieDateInput.value
     movie.Genre = movieGenreInput.value
     console.log(movie);
-    saveMovie(movie)
+    saveMovie(movie);
 })
 
 searchBtn.addEventListener('click', () => {
     const searchValue = searchInput.value
     manageSearch(searchValue)
 })
+
+// function checkInputs() {
+//     if (movie.Name == '') {
+//         alert('Skriv in filmens namn!')
+//     }
+//     else if(movie.Genre == '') {
+//         alert('Skriv in filmens genre!')
+//     }
+//     else if (movie.Date == '') {
+//         alert('Skriv in när filmen släpptes!')
+//     }
+// }

@@ -3,16 +3,69 @@
     margin: 0;
 }
 
-#inputFields {
-    display: flex;
-    flex-direction: column;
+.hide {
+    display: none;
 }
 
-input {
-    width: 8rem;
+body {
+    background-color: #333533;
+    color: #F5CB5C;
+}
+
+header {
+    background-color: #242423;
+    height: 6rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-content: center;
+}
+
+button {
+    background-color: #242423;
+    color: #F5CB5C;
+    width: 10rem;
+    height: 2rem;
+    border-radius: 5px;
+}
+
+#headerText {
+    grid-column: 2 / 3;
+}
+
+#searchAside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchBar {
+    height: 2rem;
+    width: 10rem;
+    font-size: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin-right: 3px;
+}
+
+#searchBtn {
+    height: 2rem;
+}
+
+#inputFields {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 20rem;
+    font-size: 2rem;
+}
+
+#inputFields input {
+    height: 1.5rem;
+    width: 10rem;
 }
 
 #movieSubmit {
     margin-top: 1rem;
-    width: 8rem;
 }
