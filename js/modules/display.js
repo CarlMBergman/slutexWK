@@ -1,3 +1,6 @@
+// Här har jag lagt det som skickar ut info och tar bort info ifrån min sida. Genom att lägga detta tillsammans så blir det en bra struktur och 
+// jag behöver inte hämta mina sectioner mer än en gång. 
+
 const movieSection  = document.querySelector('#savedMoviesSection')
 const searchSection = document.querySelector('#searchSection')
 

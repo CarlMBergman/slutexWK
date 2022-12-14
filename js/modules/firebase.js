@@ -1,4 +1,8 @@
-// Import the functions you need from the SDKs you need
+// Allt som hade med firebase att göra la jag i en modul eftersom jag kommer behöva komma åt databasen i dom flesta funktionerna. Undantaget är för managesearch
+// och removeClick. Manage search tycker jag är rätt så naturligt att den ligger i denna modulen eftersom det den gör är att hantera saker ifrån databasen. 
+// removeClick var jag lite mer osäker på, den hade absolut kunnat vara med dom andra clicken i index.js för att göra det tydligare att alla klick funktioner
+// finns på ett ställe. Men om jag skulle flytta den så hade jag ändå behövt (med tanke på hur jag byggt min sida) exportera tillbaka funktionen hit till 
+// firebase.js och även exportera removeMovie till index.js. Vilket jag tyckte kändes onödigt.
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, where } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
 import { showMovies, displaySearch } from "./display.js";

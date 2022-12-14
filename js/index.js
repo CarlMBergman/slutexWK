@@ -1,3 +1,6 @@
+// I index.js hamnade mina (nästan) alla mina knappar. Funderade först på om jag skulle lagt knapparna i en egen modul men såg inte riktigt poängen med det i detta
+// fallet. På detta sättet så blir det tydligt att det är härifrån programmet "körs". 
+
 import { removeMoviesFromDom } from './modules/display.js'
 import { saveMovie, manageSearch, getMovies } from './modules/firebase.js'
 
@@ -23,20 +26,11 @@ submitBtn.addEventListener('click', () => {
     saveMovie(movie);
 })
 
-// function toggleSearchBtnOn() {
-//     searchBtn.addEventListener('click', () => {
-//     const searchValue = searchInput.value
-//     manageSearch(searchValue)
-//     console.log('nu körs toggleSeachBtnOn');
-//     })
-// }
-// toggleSearchBtnOn()
-
 function searchForMovie() {
     const searchValue = searchInput.value
     manageSearch(searchValue)
-   console.log('nu körs toggleSeachBtnOn');
-   toggleSearchBtnOff()
+    console.log('nu körs toggleSeachBtnOn');
+    toggleSearchBtnOff()
 }
 
 function toggleSearchBtnOn() {
