@@ -20,22 +20,30 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
 
 async function saveMovie(movie) {
-    if (movie.Name == '') {
-        alert('Skriv in filmens namn!')
-    }
-    else if(movie.Genre == '') {
-        alert('Skriv in filmens genre!')
-    }
-    else if (movie.Date == '') {
-        alert('Skriv in när filmen släpptes!')
+    const movieName = await searchMovie(movie.Name)
+    const movieId = movieName.id
+    if (movieId) {
+        alert('Filmen är redan sparad i ditt bibliotek!')
     }
     else {
-        try {
-            await addDoc(collection(db, 'movies'), movie)
-        } catch (error) {
-            console.log(error);
+        if (movie.Name == '') {
+            alert('Skriv in filmens namn!')
+        }
+        else if(movie.Genre == '') {
+            alert('Skriv in filmens genre!')
+        }
+        else if (movie.Date == '') {
+            alert('Skriv in när filmen släpptes!')
+        }
+        else {
+            try {
+                await addDoc(collection(db, 'movies'), movie)
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
+   
 }
 
 async function getMovies() {
