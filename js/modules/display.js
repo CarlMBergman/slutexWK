@@ -8,7 +8,7 @@ function showMovies(savedMovies) {
     movieSection.classList.toggle('hide')
     savedMovies.forEach((savedMovie) => {
         const movieName = savedMovie.data().Name
-        const removedSpaces = movieName.replaceAll(' ', '').replaceAll(',', '').replaceAll('!', '').replaceAll('?', '').replaceAll('.', '')
+        const removedSpaces = movieName.replaceAll(' ', 'z').replaceAll(',', 'z').replaceAll('!', 'z').replaceAll('?', 'z').replaceAll('.', 'z')
         console.log(removedSpaces);
         const elem = `
         <article class="savedMovieArt" id="${removedSpaces}">
@@ -34,7 +34,7 @@ function removeMoviesFromDom() {
 function displaySearch(movie) {
     searchSection.classList.toggle('hide')
     const movieName = movie.data().Name
-    const removedSpaces = movieName.replaceAll(' ', '').replaceAll(',', '').replaceAll('!', '').replaceAll('?', '').replaceAll('.', '')
+    const removedSpaces = movieName.replaceAll(' ', 'z').replaceAll(',', 'z').replaceAll('!', 'z').replaceAll('?', 'z').replaceAll('.', 'z')
     const elem = `
     <article class="savedMovieArt" id="${removedSpaces}">
         <h1 class="savedMovieHead">${movie.data().Name}</h1>
