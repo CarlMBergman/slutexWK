@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <h1 id="headerText">Spara dina favorit filmer!</h1>
+      <h1 id="headerText">DE-VE-DE MovieHub</h1>
       <aside id="searchAside">
         <input type="text" id="searchBar" placeholder="Sök efter film!" />
         <img
@@ -19,25 +19,26 @@
         />
       </aside>
     </header>
-    <aside id="toCenterSection">
+    <main>
       <section id="savedMoviesSection" class="hide">
-        <button id="backToSearch"><-</button>
+        <button class="backToSearch"><-</button>
       </section>
-    </aside>
 
-    <section id="inputFields">
-      <label for="movieNameInput">Film namn</label>
-      <input type="text" id="movieNameInput" />
-      <label for="movieGenreInput">Genre</label>
-      <input type="text" id="movieGenreInput" />
-      <label for="movieDateInput">Utgivnings datum</label>
-      <input type="date" id="movieDateInput" />
-      <button id="movieSubmit">Spara film</button>
-      <button id="showSaved">Visa mina filmer</button>
-    </section>
+      <section id="inputFields">
+        <label for="movieNameInput">Film namn</label>
+        <input type="text" id="movieNameInput" />
+        <label for="movieGenreInput">Genre</label>
+        <input type="text" id="movieGenreInput" />
+        <label for="movieDateInput">Utgivnings datum</label>
+        <input type="date" id="movieDateInput" />
+        <button id="movieSubmit">Spara film</button>
+        <button id="showSaved">Visa mina filmer</button>
+      </section>
 
-    <section id="searchSection"></section>
-
+      <section id="searchSection" class="hide">
+        <button class="backToSearch"><-</button>
+      </section>
+    </main>
     <script type="module" src="js/index.js"></script>
   </body>
 </html>

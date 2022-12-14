@@ -4,12 +4,15 @@ const searchSection = document.querySelector('#searchSection')
 function showMovies(savedMovies) {
     movieSection.classList.toggle('hide')
     savedMovies.forEach((savedMovie) => {
+        const movieName = savedMovie.data().Name
+        const removedSpaces = movieName.replaceAll(' ', '').replaceAll(',', '').replaceAll('!', '').replaceAll('?', '').replaceAll('.', '')
+        console.log(removedSpaces);
         const elem = `
-        <article class="savedMovieArt" id="${savedMovie.data().Name}">
+        <article class="savedMovieArt" id="${removedSpaces}">
             <h1 class="savedMovieHead">${savedMovie.data().Name}</h1>
             <p class="savedMovieGenre">Genre: ${savedMovie.data().Genre}</p>
             <p class="savedMovieDate">Utgivnings datum: ${savedMovie.data().Date}</p>
-            <button class="removeMovieBtn" movie-name="${savedMovie.data().Name}" data-movie-id="${savedMovie.id}">Ta bort filmen ifrån listan</button>
+            <button class="removeMovieBtn" movie-name="${removedSpaces}" data-movie-id="${savedMovie.id}">Ta bort filmen ifrån listan</button>
         </article>
         `
         movieSection.insertAdjacentHTML('afterbegin', elem)
@@ -21,18 +24,23 @@ function removeMoviesFromDom() {
     movieArticles.forEach((article) => {
         article.remove()
     })
-    movieSection.classList.toggle('hide')
+    movieSection.classList.add('hide')
+    searchSection.classList.add('hide')
 }
 
 function displaySearch(movie) {
+    searchSection.classList.toggle('hide')
+    const movieName = movie.data().Name
+    const removedSpaces = movieName.replaceAll(' ', '').replaceAll(',', '').replaceAll('!', '').replaceAll('?', '').replaceAll('.', '')
     const elem = `
-    <article>
+    <article class="savedMovieArt" id="${removedSpaces}">
         <h1 class="savedMovieHead">${movie.data().Name}</h1>
         <p class="savedMovieGenre">Genre: ${movie.data().Genre}</p>
         <p class="savedMovieDate">Utgivnings datum: ${movie.data().Date}</p>
+        <button class="removeMovieBtn" movie-name="${removedSpaces}" data-movie-id="${movie.id}">Ta bort filmen ifrån listan</button>
     </article>
     `
 
-    searchSection.insertAdjacentHTML('beforeend', elem)
+    searchSection.insertAdjacentHTML('afterbegin', elem)
 }
 export { showMovies, displaySearch, removeMoviesFromDom }

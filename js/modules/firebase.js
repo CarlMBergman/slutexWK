@@ -83,6 +83,7 @@ async function manageSearch(searchValue) {
     if (movieId) {
         console.log(movieName.data().Genre);
         displaySearch(movieName)
+        removeClick()
     } else {
         alert('Du har ingen sparad film med detta namn!')
     }

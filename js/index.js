@@ -8,7 +8,7 @@ const submitBtn       = document.querySelector('#movieSubmit')
 const searchBtn       = document.querySelector('#searchBtn')
 const searchInput     = document.querySelector('#searchBar')
 const showSavedBtn    = document.querySelector('#showSaved')
-const backToSearch    = document.querySelector('#backToSearch')
+const backToSearch    = document.querySelectorAll('.backToSearch')
 let movie             = {
     Name: '',
     Genre: '',
@@ -23,15 +23,44 @@ submitBtn.addEventListener('click', () => {
     saveMovie(movie);
 })
 
-searchBtn.addEventListener('click', () => {
+// function toggleSearchBtnOn() {
+//     searchBtn.addEventListener('click', () => {
+//     const searchValue = searchInput.value
+//     manageSearch(searchValue)
+//     console.log('nu körs toggleSeachBtnOn');
+//     })
+// }
+// toggleSearchBtnOn()
+
+function searchForMovie() {
     const searchValue = searchInput.value
     manageSearch(searchValue)
-})
+   console.log('nu körs toggleSeachBtnOn');
+   toggleSearchBtnOff()
+}
+
+function toggleSearchBtnOn() {
+    searchBtn.addEventListener('click', searchForMovie)
+}
+toggleSearchBtnOn()
+
+function toggleSearchBtnOff() {
+    searchBtn.removeEventListener('click', searchForMovie)
+    console.log('nu körs togglesearchBtnoff');
+}
 
 showSavedBtn.addEventListener('click', () => {
     getMovies()
+    toggleSearchBtnOff()
 })
 
-backToSearch.addEventListener('click', () => {
-    removeMoviesFromDom()
-})
+backToSearch.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        removeMoviesFromDom()
+        toggleSearchBtnOn()
+    })
+}) 
+
+
+
+
