@@ -1,5 +1,5 @@
-// Här har jag lagt det som skickar ut info och tar bort info ifrån min sida. Genom att lägga detta tillsammans så blir det en bra struktur och 
-// jag behöver inte hämta mina sectioner mer än en gång. 
+// Här har jag lagt det som skickar ut info och tar bort info ifrån min sida. Genom att lägga detta tillsammans så blir det en bra struktur,  
+// jag behöver inte hämta mina sectioner mer än en gång och jag vet vart jag skriver ut infon.
 
 const movieSection  = document.querySelector('#savedMoviesSection')
 const searchSection = document.querySelector('#searchSection')
